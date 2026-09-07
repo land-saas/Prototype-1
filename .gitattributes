@@ -1,0 +1,39 @@
+# Normalise line endings; Unity writes LF on macOS and Windows alike.
+* text=auto eol=lf
+
+# Unity YAML assets: 3-way merge with Unity's Smart Merge when it is configured, plain text merge otherwise.
+# One-time setup per machine (adjust the version path):
+#   git config merge.unityyamlmerge.name   "Unity SmartMerge"
+#   git config merge.unityyamlmerge.driver "/Applications/Unity/Hub/Editor/6000.5.10f1/Unity.app/Contents/Tools/UnityYAMLMerge merge -p %O %A %B %A"
+#   git config merge.unityyamlmerge.recursive binary
+*.unity              merge=unityyamlmerge eol=lf
+*.prefab             merge=unityyamlmerge eol=lf
+*.asset              merge=unityyamlmerge eol=lf
+*.mat                merge=unityyamlmerge eol=lf
+*.meta               merge=unityyamlmerge eol=lf
+*.controller         merge=unityyamlmerge eol=lf
+*.anim               merge=unityyamlmerge eol=lf
+*.overrideController merge=unityyamlmerge eol=lf
+*.physicsMaterial2D  merge=unityyamlmerge eol=lf
+*.inputactions       eol=lf
+
+# Binary assets. When you start adding real art/audio, install Git LFS (brew install git-lfs; git lfs install)
+# and change these lines to:  *.png filter=lfs diff=lfs merge=lfs -text
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.psd  binary
+*.tga  binary
+*.tif  binary
+*.wav  binary
+*.mp3  binary
+*.ogg  binary
+*.fbx  binary
+*.blend binary
+*.ttf  binary
+*.otf  binary
+*.wlt  binary
+*.dll  binary
+*.so   binary
+*.dylib binary
